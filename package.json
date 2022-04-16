@@ -1,0 +1,14 @@
+{
+  "name": "info-gatway_api",
+  "version": "1.0.0",
+  "description": "A simple node API",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "author": "Shivam Patel",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.3"
+  }
+}
