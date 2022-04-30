@@ -1,11 +1,11 @@
 // api module imports
-const apiV1 = require('../modules/v1')
+const api = require('../modules')
 
 // util imports
 const { unknownPathHandler } = require('../utils/errorHandlers')
 
 // routes
 module.exports = (app) => {
-  app.use('/api', apiV1)
+  app.use('/api', api)
   app.use('/', unknownPathHandler)
 }

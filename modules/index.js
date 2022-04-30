@@ -7,13 +7,13 @@ const instagram = require('./Instagram')
 const linkedin = require('./LinkedIn')
 
 // util import
-const { echo } = require('../../utils/echo')
+const { echo } = require('../utils/echo')
 
 const router = express.Router()
 
-router.use('/v1/facebook', facebook)
-router.use('/v1/instagram', instagram)
-router.use('/v1/linkedin', linkedin)
-router.use('/v1/echo/:echoParam', echo)
+router.use('/facebook', facebook)
+router.use('/instagram', instagram)
+router.use('/linkedin', linkedin)
+router.use('/echo/:echoParam', echo)
 
 module.exports = router
