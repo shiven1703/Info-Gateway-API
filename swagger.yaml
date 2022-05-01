@@ -1,0 +1,106 @@
+openapi: 3.0.0
+
+info:
+  title: Info-Gatway API docs 
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:4000/api
+    description: Localhost api endpoint
+  
+  - url: https://infogateway-api.herokuapp.com
+    description: Heroku deployment endpoint
+
+components:
+  schemas:
+    Users:
+      type: array
+      items:
+        type: object
+        properties:
+          username:
+            type: string
+            description: Username
+          platform:
+            type: string
+            description: User platform (ex. facebook, instagram, etc.)
+          age:
+            type: integer
+            description: Age of the user
+          followers:
+            type: integer
+            description: Number of followers of user
+          following:
+            type: integer
+            description: Number of following of the user
+          isAdult:
+            type: boolean
+            description: An adult flag for user
+          date:
+            type: string
+            description: Current date
+
+  securitySchemes:
+    BasicAuth:
+      type: http
+      scheme: basic
+    BearerAuth:
+      type: http
+      scheme: bearer
+
+paths:
+  /facebook:
+    get:
+      tags:
+        - Facebook
+      summary: Facebook gatway home page
+      description: returns home page of facebook gatway
+      responses:
+        '200':
+          description: OK
+
+  /facebook/users:
+    get:
+      tags:
+        - Facebook
+      summary: returns list of facebook users
+      description: List of facebook users with their details
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Users'
+
+  /echo/{echo_param}:
+    get:
+      tags:
+        - Echo
+      summary: Retuns whatever supploed as echo_param
+      description: Mainly used for checking api
+      parameters:
+        - name: echo_param
+          in: path
+          description: value which will be returned as response
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  hit:
+                    type: string
+                    description: Successful hit to the server
+                  param:
+                    type: string
+                    description: param passed while calling
+
+
+  
+

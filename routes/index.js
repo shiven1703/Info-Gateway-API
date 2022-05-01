@@ -1,11 +1,10 @@
 // api module imports
 const api = require('../modules')
 
-// util imports
-const { unknownPathHandler } = require('../utils/errorHandlers')
-
 // routes
 module.exports = (app) => {
   app.use('/api', api)
-  app.use('/', unknownPathHandler)
+  app.use('/', (req, res) => {
+    res.status(200).send('<h1>Home Page</h1>')
+  })
 }
